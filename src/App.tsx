@@ -3,9 +3,18 @@ import {
   ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, BrainCircuit, Braces, Menu, ScanEye, X,
 } from 'lucide-react';
 import {
-  SiGithub, SiGit, SiJavascript, SiMysql, SiPhp, SiPython, SiReact, SiTensorflow,
+  SiGithub,
+  SiGit,
+  SiGmail,
+  SiJavascript,
+  SiMysql,
+  SiPhp,
+  SiPython,
+  SiReact,
+  SiTensorflow,
 } from 'react-icons/si';
-import './index.css';
+
+import { FaLinkedinIn } from 'react-icons/fa6';
 
 const navItems = [
   { label: 'Home', id: 'home' },
@@ -232,7 +241,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    document.body.style.overflow = '';
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setMenuOpen(false);
     };
@@ -305,7 +314,18 @@ function App() {
       <div className={`intro-screen${introDone ? ' done' : ''}`} aria-hidden={introDone}>
         <div className="intro-inner">
           <div className="intro-count">{String(introCount).padStart(2, '0')}</div>
-          <h1 className="intro-name"><span>MUHAMMAD</span><span>HANIF</span><span>HIBATULLOH</span></h1>
+         <div className="intro-branding">
+  <img
+    src="../hh-logo.png"
+    alt="HH Logo"
+    className="intro-logo"
+  />
+
+  <div className="intro-portfolio">
+    PORTFOLIO
+  </div>
+</div>
+          <h3 className="intro-name"><span>MUHAMMAD HANIF </span><span>HIBATULLOH</span></h3>
           <div className="intro-line" />
         </div>
       </div>
@@ -315,7 +335,27 @@ function App() {
       </div>
       <header className={`topbar${scrolled ? ' scrolled' : ''}`}>
         <nav className="nav-inner" aria-label="Main navigation">
-          <a className="brand" href="#home" onClick={(event) => { event.preventDefault(); goTo('home'); }} aria-label="Hanif home">HANIF<b>.</b></a>
+          <a
+  className="brand"
+  href="#home"
+  onClick={(event) => {
+    event.preventDefault();
+    goTo('home');
+  }}
+  aria-label="Hanif home"
+>
+  <span className="brand-logo-wrap">
+    <img
+      src="../hh-logo.png"
+      alt="HH Logo"
+      className="brand-logo"
+    />
+  </span>
+
+  <span className="brand-name">
+    HANIF<b>.</b>
+  </span>
+</a>
           <div className="nav-links">
             {navItems.map((item) => <a key={item.id} className={`nav-link${active === item.id ? ' active' : ''}`} href={`#${item.id}`} onClick={(event) => { event.preventDefault(); goTo(item.id); }}>{item.label}</a>)}
           </div>
@@ -506,18 +546,113 @@ function App() {
           </div>
         </section>
 
-        <section className="contact" id="contact">
-          <div className="wrap">
-            <div className="eyebrow">06 / MAKE SOMETHING MATTER</div>
-            <h2 className="contact-title">LET'S BUILD<br /><span>SOMETHING</span><br />MEANINGFUL.</h2>
-            <p className="contact-intro">I'm open to opportunities, collaborations, research projects, and software development projects.</p>
-            <div className="contact-links">
-              <a className="contact-link" href="mailto:hanifhibatulloh86@gmail.com"><span><strong>EMAIL ME</strong><small>hanifhibatulloh86@gmail.com</small></span><ArrowUpRight size={20} /></a>
-              <a className="contact-link" href="https://www.linkedin.com/in/muhammad-hanif-hibatulloh" target="_blank" rel="noreferrer"><span><strong>LINKEDIN</strong><small>Professional profile</small></span><ArrowUpRight size={20} /></a>
-              <a className="contact-link" href="https://github.com/hanifhibatulloh-dev" target="_blank" rel="noreferrer"><span><strong>GITHUB</strong><small>Code &amp; projects</small></span><ArrowUpRight size={20} /></a>
-            </div>
+          <section className="contact" id="contact">
+  <div className="wrap contact-inner">
+
+    <div className="contact-kicker">
+      <span>06 / CONTACT</span>
+      <span>OPEN TO OPPORTUNITIES & COLLABORATIONS</span>
+    </div>
+
+    <div className="contact-heading-grid">
+      <h2 className="contact-title">
+        LET'S BUILD
+        <br />
+        <span>SOMETHING</span>
+        <br />
+        MEANINGFUL.
+      </h2>
+
+      <div className="contact-copy">
+        <p>
+          I'm open to opportunities, collaborations, research projects,
+          and software development projects.
+        </p>
+
+        <span className="contact-status">
+          Indonesia · Available for collaboration
+        </span>
+      </div>
+    </div>
+
+    <div className="contact-links">
+
+      <a
+        className="contact-link contact-email"
+        href="mailto:hanifhibatulloh86@gmail.com"
+      >
+        <div className="contact-link-top">
+          <span className="contact-index">01</span>
+
+          <div className="contact-icon-wrap">
+            <SiGmail className="contact-brand-icon" />
           </div>
-        </section>
+        </div>
+
+        <div className="contact-link-body">
+          <strong>Email</strong>
+          <small>hanifhibatulloh86@gmail.com</small>
+        </div>
+
+        <span className="contact-arrow">
+          <ArrowUpRight size={18} />
+        </span>
+      </a>
+
+
+      <a
+        className="contact-link contact-linkedin"
+        href="https://www.linkedin.com/in/muhammad-hanif-hibatulloh"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div className="contact-link-top">
+          <span className="contact-index">02</span>
+
+          <div className="contact-icon-wrap">
+            <FaLinkedinIn className="contact-brand-icon" />
+          </div>
+        </div>
+
+        <div className="contact-link-body">
+          <strong>LinkedIn</strong>
+          <small>/in/muhammad-hanif-hibatulloh</small>
+        </div>
+
+        <span className="contact-arrow">
+          <ArrowUpRight size={18} />
+        </span>
+      </a>
+
+
+      <a
+        className="contact-link contact-github"
+        href="https://github.com/hanifhibatulloh-dev"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div className="contact-link-top">
+          <span className="contact-index">03</span>
+
+          <div className="contact-icon-wrap">
+            <SiGithub className="contact-brand-icon" />
+          </div>
+        </div>
+
+        <div className="contact-link-body">
+          <strong>GitHub</strong>
+          <small>@hanifhibatulloh-dev</small>
+        </div>
+
+        <span className="contact-arrow">
+          <ArrowUpRight size={18} />
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
       </main>
       <footer className="footer">
         <div className="footer-inner">
